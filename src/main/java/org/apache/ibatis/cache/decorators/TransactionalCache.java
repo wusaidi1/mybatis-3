@@ -64,6 +64,7 @@ public class TransactionalCache implements Cache {
   @Override
   public Object getObject(Object key) {
     // issue #116
+    // 执行二级缓存链
     Object object = delegate.getObject(key);
     if (object == null) {
       entriesMissedInCache.add(key);
